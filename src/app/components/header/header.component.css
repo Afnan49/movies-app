@@ -1,0 +1,28 @@
+@import "../../../styles/_color_css.css";
+
+header .navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  height: 65px;
+  margin: 0;
+  background-color: var(--bgColorLight);
+  border-bottom: 1px solid rgb(255, 255, 255, 0.1);
+}
+header .navbar .navbar-logo {
+  display: block;
+}
+header .navbar .navbar-logo img {
+  width: 50px;
+}
+header .navbar .navbar-links {
+  display: block;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+header .navbar .navbar-links li {
+  display: inline;
+  margin-right: 15px;
+}

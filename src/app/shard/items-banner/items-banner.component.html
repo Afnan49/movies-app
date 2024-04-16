@@ -1,0 +1,16 @@
+<div class="container">
+  <h2
+    style="
+      color: #d4af37;
+      border-bottom: 1px solid #d4af37;
+      padding-bottom: 5px;
+    "
+  >
+    {{ title }}
+  </h2>
+  <div class="grid">
+    <div class="col-6 md:col-3 lg:col-2" *ngFor="let item of movie">
+      <app-movie-item [movie]="item"></app-movie-item>
+    </div>
+  </div>
+</div>
