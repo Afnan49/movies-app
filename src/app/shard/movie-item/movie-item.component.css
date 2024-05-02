@@ -34,3 +34,12 @@
   font-weight: bold;
   margin: 0.5rem;
 }
+a {
+  text-decoration: none;
+  color: var(--white);
+}
+@media (max-width: 575px) {
+  .movie-item {
+    width: 100%;
+  }
+}

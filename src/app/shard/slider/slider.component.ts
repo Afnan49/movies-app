@@ -8,6 +8,7 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
+import { tvShows } from '../../models/tv';
 
 @Component({
   selector: 'app-slider',
@@ -24,16 +25,18 @@ import {
 export class SliderComponent implements OnInit {
   imagesSize = IMAGES_SIZES;
   @Input() items: Movies[] = [];
+  @Input() tvShows: tvShows[] = [];
   curentIndex: number = 0;
   ngOnInit(): void {
-    // setTimeout(() => {
-    //   console.log('hello');
-    //   this.setInterval;
-    // }, 2000);
+    //   setTimeout(() => {
+    //     console.log('hello');
+    //     this.setInterval;
+    //   }, 5000);
+    // }
+    // setInterval = setInterval(() => {
+    //   console.log('wolcom');
+    //   console.log(this.curentIndex);
+    //   this.curentIndex = this.curentIndex++;
+    // }, 5000);
   }
-  // setInterval = setInterval(() => {
-  // console.log('wolcom');
-  //     console.log(this.curentIndex);
-  //     this.curentIndex = this.curentIndex++;
-  // }, 5000);
 }

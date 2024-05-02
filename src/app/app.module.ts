@@ -17,6 +17,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ItemsBannerComponent } from './shard/items-banner/items-banner.component';
 import { MovieItemComponent } from './shard/movie-item/movie-item.component';
 import { PaginatorModule } from 'primeng/paginator';
+import { TabViewModule } from 'primeng/tabview';
+import { MoviedetailsComponent } from './pages/moviedetails/moviedetails.component';
+import { MovieVideosComponent } from './shard/movie-videos/movie-videos.component';
+import { ImageModule } from 'primeng/image';
+import { CarouselModule } from 'primeng/carousel';
+import { CategoryComponent } from './pages/category/category.component';
+import { InputTextModule } from 'primeng/inputtext';
+import { TvshowsComponent } from './pages/tvshows/tvshows.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +37,10 @@ import { PaginatorModule } from 'primeng/paginator';
     SliderComponent,
     ItemsBannerComponent,
     MovieItemComponent,
+    MoviedetailsComponent,
+    MovieVideosComponent,
+    CategoryComponent,
+    TvshowsComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,6 +48,10 @@ import { PaginatorModule } from 'primeng/paginator';
     HttpClientModule,
     BrowserAnimationsModule,
     PaginatorModule,
+    TabViewModule,
+    ImageModule,
+    CarouselModule,
+    InputTextModule,
   ],
   providers: [provideClientHydration()],
   bootstrap: [AppComponent],

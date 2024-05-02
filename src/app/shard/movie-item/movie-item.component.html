@@ -1,4 +1,4 @@
-<a class="movie-item">
+<a class="movie-item" [routerLink]="'/moviedetails/' + movie?.id">
   <div class="movie-item-rating">
     <i class="app-icon"> hotel_class </i>
     <span>{{ movie?.vote_average }}</span

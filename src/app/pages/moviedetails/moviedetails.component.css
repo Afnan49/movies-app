@@ -1,0 +1,39 @@
+@import "../../../styles/_color_css.css";
+:host ::ng-deep .p-tabview .p-tabview-nav {
+  justify-content: center;
+}
+:host ::ng-deep .p-tabview .p-tabview-nav li .p-tabview-nav-link {
+  background-color: var(--bgColor);
+}
+:host ::ng-deep .p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link {
+  background-color: var(--bgColor);
+}
+.poster {
+  max-width: 100%;
+}
+.overview {
+  line-height: 1.5;
+}
+.state {
+  display: flex;
+  margin-bottom: 15px;
+}
+.label {
+  width: 113px;
+  font-weight: bold;
+}
+.value {
+  color: var(--primaryColor);
+}
+.actors {
+  padding: 10px;
+}
+.actors img {
+  max-width: 100%;
+}
+.actors span {
+  display: block;
+  text-align: center;
+  margin: 10px 0;
+  color: var(--primaryColor);
+}

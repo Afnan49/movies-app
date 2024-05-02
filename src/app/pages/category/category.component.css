@@ -1,0 +1,18 @@
+@import "../../../styles/_color_css.css";
+.genre-link {
+  text-decoration: none;
+  color: var(--bgColor);
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 37px;
+  background-color: var(--primaryColor);
+  border-radius: 7px;
+}
+h1 {
+  text-align: center;
+  padding-bottom: 20px;
+  color: var(--primaryColor);
+}

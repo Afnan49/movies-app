@@ -1,28 +1,61 @@
-<div class="slider">
-  <ng-container *ngFor="let movie of items; let i = index">
-    <div class="slide" @slidFade *ngIf="i == curentIndex">
-      <div class="slide-bg">
-        <img
-          [src]="imagesSize.larg + movie.backdrop_path"
-          alt="{{ movie.title }}"
-        />
-      </div>
-      <div class="slide-pane">
-        <h2 class="name">{{ movie.title }}</h2>
-        <div class="meta">
-          <div class="info">
-            <span class="rating">
-              <span class="app-icon"> hotel_class </span>
-              <span class="rating-value"
-                >{{ movie.vote_average }}<span>/10</span></span
-              >
-            </span>
-            <span>{{ movie.vote_count }} Reviews</span>
-            <span>{{ movie.release_date | date : "yyyy" }}</span>
-          </div>
+<ng-container *ngIf="items && items.length > 0; else tvShowsContainer">
+  <div class="slider">
+    <ng-container *ngFor="let movie of items; let i = index">
+      <div class="slide" @slidFade *ngIf="i === curentIndex">
+        <div class="slide-bg">
+          <img
+            [src]="imagesSize.larg + movie.backdrop_path"
+            alt="{{ movie.title }}"
+          />
         </div>
-        <div class="desc mt-6">{{ movie.overview }}</div>
+        <div class="slide-pane">
+          <h2 class="name">{{ movie.title }}</h2>
+          <div class="meta">
+            <div class="info">
+              <span class="rating">
+                <span class="app-icon">hotel_class</span>
+                <span class="rating-value"
+                  >{{ movie.vote_average }}<span>/10</span></span
+                >
+              </span>
+              <span>{{ movie.vote_count }} Reviews</span>
+              <span>{{ movie.release_date | date : "yyyy" }}</span>
+            </div>
+          </div>
+          <div class="desc mt-6">{{ movie.overview }}</div>
+        </div>
       </div>
-    </div>
-  </ng-container>
-</div>
+    </ng-container>
+  </div>
+</ng-container>
+
+<ng-template #tvShowsContainer>
+  <div class="slider">
+    <ng-container *ngFor="let show of tvShows; let i = index">
+      <div class="slide" @slidFade *ngIf="i === curentIndex">
+        <div class="slide-bg">
+          <img
+            [src]="imagesSize.larg + show.backdrop_path"
+            alt="{{ show.name }}"
+          />
+        </div>
+        <div class="slide-pane">
+          <h2 class="name">{{ show.name }}</h2>
+          <div class="meta">
+            <div class="info">
+              <span class="rating">
+                <span class="app-icon">hotel_class</span>
+                <span class="rating-value"
+                  >{{ show.vote_average }}<span>/10</span></span
+                >
+              </span>
+              <span>{{ show.vote_count }} Reviews</span>
+              <span>{{ show.first_air_date | date : "yyyy" }}</span>
+            </div>
+          </div>
+          <div class="desc mt-6">{{ show.overview }}</div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</ng-template>
