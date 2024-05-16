@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Movies } from '../../models/movies';
 import { IMAGES_SIZES } from '../../constants/images-sizes';
 import {
@@ -9,7 +9,6 @@ import {
   trigger,
 } from '@angular/animations';
 import { tvShows } from '../../models/tv';
-
 @Component({
   selector: 'app-slider',
   templateUrl: './slider.component.html',
@@ -22,21 +21,27 @@ import { tvShows } from '../../models/tv';
     ]),
   ],
 })
-export class SliderComponent implements OnInit {
+export class SliderComponent implements OnInit, OnDestroy {
   imagesSize = IMAGES_SIZES;
   @Input() items: Movies[] = [];
-  @Input() tvShows: tvShows[] = [];
+  @Input() isBanner: boolean = false;
   curentIndex: number = 0;
+  lang: string | null = sessionStorage.getItem('lang');
+  private interval: any;
   ngOnInit(): void {
-    //   setTimeout(() => {
-    //     console.log('hello');
-    //     this.setInterval;
-    //   }, 5000);
-    // }
-    // setInterval = setInterval(() => {
-    //   console.log('wolcom');
-    //   console.log(this.curentIndex);
-    //   this.curentIndex = this.curentIndex++;
-    // }, 5000);
+    if (!this.isBanner) {
+      const storedIndex = localStorage.getItem('index');
+      this.curentIndex = storedIndex ? parseInt(storedIndex, 10) : 0;
+      this.setInterval();
+    }
+  }
+  setInterval() {
+    this.interval = setInterval(() => {
+      this.curentIndex = (this.curentIndex + 1) % this.items.length;
+      localStorage.setItem('index', this.curentIndex.toString());
+    }, 5000);
+  }
+  ngOnDestroy(): void {
+    clearInterval(this.interval);
   }
 }

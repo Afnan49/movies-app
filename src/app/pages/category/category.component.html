@@ -1,9 +1,19 @@
-<div class="container">
-  <h1>Movies Genres</h1>
+<div class="container" [dir]="'dir' | translate">
+  <h1>{{ "genresInfo.movies" | translate }}</h1>
   <div class="grid">
     <ng-container *ngFor="let genre of genres">
       <div class="col-12 sm:col-6 md:col-3 lg:col-2">
         <a class="genre-link" [routerLink]="'/movies/Genres/' + genre.id">{{
+          genre.name
+        }}</a>
+      </div>
+    </ng-container>
+  </div>
+  <h1>{{ "genresInfo.shows" | translate }}</h1>
+  <div class="grid">
+    <ng-container *ngFor="let genre of tvGenres">
+      <div class="col-12 sm:col-6 md:col-3 lg:col-2">
+        <a class="genre-link" [routerLink]="'/shows/Genres/' + genre.id">{{
           genre.name
         }}</a>
       </div>

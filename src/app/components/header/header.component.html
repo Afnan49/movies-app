@@ -1,13 +1,31 @@
 <header>
-  <nav class="navbar">
+  <nav class="navbar" [dir]="transServ.currentLang === 'ar' ? 'rtl' : 'ltr'">
     <a href="" class="navbar-logo">
       <img src="assets/images/movies.jpg" alt="" />
     </a>
-    <ul class="navbar-links">
-      <li><a routerLink="/">Home</a></li>
-      <li><a routerLink="/movies">Movies</a></li>
-      <li><a routerLink="/Tvshows">TV shows</a></li>
-      <li><a routerLink="/Genres">Genres</a></li>
-    </ul>
+    <div class="links-bar">
+      <ul class="navbar-links">
+        <li>
+          <a routerLink="/">{{ "headerInfo.link1" | translate }}</a>
+        </li>
+        <li>
+          <a routerLink="/movies">{{ "headerInfo.link2" | translate }}</a>
+        </li>
+        <li>
+          <a routerLink="/shows">{{ "headerInfo.link3" | translate }}</a>
+        </li>
+        <li>
+          <a routerLink="/Genres">{{ "headerInfo.link4" | translate }}</a>
+        </li>
+      </ul>
+      <select
+        name="language"
+        (change)="translate($event)"
+        [value]="transServ.currentLang"
+      >
+        <option value="en">English</option>
+        <option value="ar">Arabic</option>
+      </select>
+    </div>
   </nav>
 </header>

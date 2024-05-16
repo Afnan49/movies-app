@@ -1,0 +1,14 @@
+@import "../../../styles/_color_css.css";
+:host ::ng-deep .p-input-icon-left {
+  width: 100%;
+}
+:host ::ng-deep .p-input-icon-left button,
+.p-input-icon-left input {
+  width: 100%;
+}
+:host ::ng-deep .pi.pi-search {
+  color: var(--primaryColor);
+}
+.search-content {
+  justify-content: center;
+}

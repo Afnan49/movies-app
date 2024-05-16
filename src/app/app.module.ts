@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 import {
   BrowserModule,
   provideClientHydration,
@@ -24,8 +24,22 @@ import { ImageModule } from 'primeng/image';
 import { CarouselModule } from 'primeng/carousel';
 import { CategoryComponent } from './pages/category/category.component';
 import { InputTextModule } from 'primeng/inputtext';
-import { TvshowsComponent } from './pages/tvshows/tvshows.component';
+import { ShowsComponent } from './pages/shows/shows.component';
+import { TvshowsdetailsComponent } from './pages/tvshowsdetails/tvshowsdetails.component';
+import { TvVideosComponent } from './shard/tv-videos/tv-videos.component';
+import { ShowsliderComponent } from './shard/showslider/showslider.component';
+import { ProgressBarModule } from 'primeng/progressbar';
+import {
+  TranslateLoader,
+  TranslateModule,
+  TranslateService,
+} from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HttpClient } from '@angular/common/http';
 
+export function httpTranslateLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +54,11 @@ import { TvshowsComponent } from './pages/tvshows/tvshows.component';
     MoviedetailsComponent,
     MovieVideosComponent,
     CategoryComponent,
-    TvshowsComponent,
+
+    ShowsComponent,
+    TvshowsdetailsComponent,
+    TvVideosComponent,
+    ShowsliderComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,8 +70,16 @@ import { TvshowsComponent } from './pages/tvshows/tvshows.component';
     ImageModule,
     CarouselModule,
     InputTextModule,
+    ProgressBarModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: httpTranslateLoaderFactory,
+        deps: [HttpClient],
+      },
+    }),
   ],
-  providers: [provideClientHydration()],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

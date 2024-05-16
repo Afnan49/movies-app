@@ -2,13 +2,7 @@
 :host ::ng-deep .p-tabview .p-tabview-nav {
   justify-content: center;
 }
-:host ::ng-deep .p-tabview .p-tabview-nav li .p-tabview-nav-link {
-  background-color: var(--bgColor);
-}
-:host ::ng-deep .p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link {
-  background-color: var(--bgColor);
-}
-.poster {
+.image {
   max-width: 100%;
 }
 .overview {
@@ -18,12 +12,29 @@
   display: flex;
   margin-bottom: 15px;
 }
-.label {
-  width: 113px;
+.lable {
+  width: 141px;
   font-weight: bold;
 }
 .value {
   color: var(--primaryColor);
+}
+.season {
+  max-width: 750px;
+}
+.genre {
+  padding: 0 10px;
+  line-height: 1.5;
+}
+.genre:not(:last-of-type) {
+  border-right: 1px solid var(--primaryColor);
+}
+.genre-ar {
+  padding: 0 10px;
+  line-height: 1.5;
+}
+.genre-ar:not(:last-of-type) {
+  border-left: 1px solid var(--primaryColor);
 }
 .actors {
   padding: 10px;
@@ -36,18 +47,6 @@
   text-align: center;
   margin: 10px 0;
   color: var(--primaryColor);
-}
-.genre {
-  padding: 0 10px;
-}
-.genre:not(:last-of-type) {
-  border-right: 1px solid var(--primaryColor);
-}
-.genre-ar {
-  padding: 0 10px;
-}
-.genre-ar:not(:last-of-type) {
-  border-left: 1px solid var(--primaryColor);
 }
 .review {
   margin: 20px 0;

@@ -43,6 +43,7 @@ export interface MoviesIMages {
 }
 export interface MovieCredits {
   cast: {
+    id: number;
     name: string;
     profile_path: string;
   }[];
@@ -53,4 +54,19 @@ export interface MoviesGeres {
 export interface genre {
   id: number;
   name: string;
+}
+export interface MovieReviews {
+  page: number;
+  results: reviews[];
+  total_results: number;
+  total_pages: number;
+}
+export interface reviews {
+  author: string;
+  author_details: {
+    avatar_path: string;
+    rating: number;
+  };
+  content: string;
+  created_at: string;
 }

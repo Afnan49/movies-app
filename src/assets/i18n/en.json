@@ -1,0 +1,43 @@
+{
+  "dir": "ltr",
+  "headerInfo": {
+    "link1": "Home",
+    "link2": "Movies",
+    "link3": "Tv Shows",
+    "link4": "Genres"
+  },
+  "footerInfo": "movies all rights reserved",
+  "homeInfo": {
+    "title1": "Popular Movies",
+    "title2": "Upcoming Movies",
+    "title3": "Top Rated Movies",
+    "title4": "Now Playing Movies"
+  },
+  "genresInfo": {
+    "movies": "Movies Genres",
+    "shows": "Tv Shows Genres"
+  },
+  "Details": {
+    "link1": "Overview",
+    "link2": "Videos",
+    "link3": "Photos",
+    "link4": "Cast",
+    "link5": "reviews",
+    "link6": "similar"
+  },
+  "overviewInfo": {
+    "title1": "Overview",
+    "title2": "First Air Date",
+    "title3": "Last Air Date ",
+    "title4": "Language",
+    "title5": "Statuse ",
+    "title6": "Genres",
+    "title7": "Seasons Number",
+    "title8": "Episodes Number"
+  },
+  "movieOverView": {
+    "title1": "Release Date",
+    "title2": "Revenue",
+    "title3": "Duration "
+  }
+}

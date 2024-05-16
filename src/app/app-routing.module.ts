@@ -5,15 +5,18 @@ import { MoviesComponent } from './pages/movies/movies.component';
 import { NotfoundComponent } from './pages/notfound/notfound.component';
 import { MoviedetailsComponent } from './pages/moviedetails/moviedetails.component';
 import { CategoryComponent } from './pages/category/category.component';
-import { TvshowsComponent } from './pages/tvshows/tvshows.component';
+import { ShowsComponent } from './pages/shows/shows.component';
+import { TvshowsdetailsComponent } from './pages/tvshowsdetails/tvshowsdetails.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'movies', component: MoviesComponent },
   { path: 'movies/Genres/:id', component: MoviesComponent },
   { path: 'moviedetails/:id', component: MoviedetailsComponent },
-  { path: 'Tvshows', component: TvshowsComponent },
+  { path: 'tvshowsdetails/:id', component: TvshowsdetailsComponent },
   { path: 'Genres', component: CategoryComponent },
+  { path: 'shows', component: ShowsComponent },
+  { path: 'shows/Genres/:id', component: ShowsComponent },
   { path: '**', component: NotfoundComponent },
 ];
 

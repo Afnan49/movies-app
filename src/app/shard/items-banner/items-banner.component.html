@@ -8,9 +8,21 @@
   >
     {{ title }}
   </h2>
-  <div class="grid">
-    <div class="col-12 sm:col-6 md:col-3 lg:col-2" *ngFor="let item of movie">
-      <app-movie-item [movie]="item"></app-movie-item>
+  <ng-container *ngIf="movie && movie.length > 0; else tvShowsContainer">
+    <div class="grid">
+      <div class="col-12 sm:col-6 md:col-3 lg:col-2" *ngFor="let item of movie">
+        <app-movie-item [movie]="item"></app-movie-item>
+      </div>
     </div>
-  </div>
+  </ng-container>
+  <ng-template #tvShowsContainer>
+    <div class="grid">
+      <div
+        class="col-12 sm:col-6 md:col-3 lg:col-2"
+        *ngFor="let item of tvShows"
+      >
+        <app-movie-item [tvShows]="item"></app-movie-item>
+      </div>
+    </div>
+  </ng-template>
 </div>

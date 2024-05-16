@@ -12,7 +12,9 @@ export class HomeComponent implements OnInit {
   upComingrMovies: Movies[] = [];
   toRatedMovies: Movies[] = [];
   nowPlayingMovies: Movies[] = [];
+
   constructor(private moviesserv: MoviesService) {}
+
   ngOnInit(): void {
     this.moviesserv.getMovies('popular').subscribe((res) => {
       this.popularMovies = res;

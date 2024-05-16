@@ -7,6 +7,7 @@ import {
   MoviesDtoVideos,
   MoviesIMages,
   movieVideo,
+  reviews,
 } from '../../models/movies';
 import { IMAGES_SIZES } from '../../constants/images-sizes';
 import { first } from 'rxjs/operators';
@@ -20,10 +21,12 @@ export class MoviedetailsComponent implements OnInit {
   similarMovies: Movies[] = [];
   movies: Movies | null = null;
   movieVideos: movieVideo[] = [];
+  movieReviews: reviews[] = [];
   movieImages: MoviesIMages | null = null;
   movieActors: MovieCredits | null = null;
   imageSizes = IMAGES_SIZES;
   similarId: number | null = null;
+  lang: string | null = sessionStorage.getItem('lang');
   constructor(
     private route: ActivatedRoute,
     private movieServ: MoviesService
@@ -37,6 +40,7 @@ export class MoviedetailsComponent implements OnInit {
       this.getMovieImages(idNumber);
       this.getMovieActors(idNumber);
       this.getMovieSImilar(idNumber, 1);
+      this.getMovieReviews(idNumber);
       // console.log(id);
     });
   }
@@ -79,5 +83,11 @@ export class MoviedetailsComponent implements OnInit {
     if (this.similarId) {
       this.getMovieSImilar(this.similarId, pagenumber);
     }
+  }
+  // ====================================< get movie reviews >===============================================
+  getMovieReviews(id: number) {
+    this.movieServ.getMovieReviews(id).subscribe((res) => {
+      this.movieReviews = res;
+    });
   }
 }

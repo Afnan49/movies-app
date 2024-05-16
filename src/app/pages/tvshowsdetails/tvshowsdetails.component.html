@@ -1,54 +1,62 @@
-<ng-container *ngIf="movies">
-  <app-slider [items]="[movies]" [isBanner]="true"></app-slider>
+<ng-container *ngIf="show">
+  <app-showslider [tvShow]="[show]"></app-showslider>
   <p-tabView [dir]="'dir' | translate">
     <p-tabPanel [header]="'Details.link1' | translate">
       <div class="grid">
         <div class="col-12 md:col-3 lg:col-3">
           <img
-            class="poster"
-            [src]="imageSizes.larg + movies.poster_path"
-            [alt]="movies.title"
+            class="image"
+            [src]="imagesSizes.larg + show.poster_path"
+            [alt]="show.name"
           />
         </div>
         <div class="col-12 md:col-9 lg:col-9">
           <h2>{{ "overviewInfo.title1" | translate }}</h2>
-          <p class="overview">{{ movies.overview }}</p>
+          <p class="overview">{{ show.overview }}</p>
           <div class="state">
-            <div class="label">{{ "movieOverView.title1" | translate }} :</div>
+            <div class="lable">{{ "overviewInfo.title2" | translate }} :</div>
             <div class="value">
-              {{ movies.release_date | date : "dd/MM/yyyy" }}
+              {{ show.first_air_date | date : "dd/MM/yyyy" }}
             </div>
           </div>
           <div class="state">
-            <div class="label">{{ "overviewInfo.title4" | translate }} :</div>
+            <div class="lable">{{ "overviewInfo.title3" | translate }} :</div>
             <div class="value">
-              {{ movies.original_language | uppercase }}
+              {{ show.last_air_date | date : "dd/MM/yyyy" }}
             </div>
           </div>
           <div class="state">
-            <div class="label">{{ "movieOverView.title2" | translate }} :</div>
+            <div class="lable">{{ "overviewInfo.title4" | translate }} :</div>
             <div class="value">
-              {{ movies.revenue | currency }}
+              {{ show.original_language | uppercase }}
             </div>
           </div>
           <div class="state">
-            <div class="label">{{ "movieOverView.title3" | translate }} :</div>
-            <div class="value">{{ movies.runtime }} M</div>
-          </div>
-          <div class="state">
-            <div class="label">{{ "overviewInfo.title5" | translate }} :</div>
+            <div class="lable">{{ "overviewInfo.title5" | translate }} :</div>
             <div class="value">
-              {{ movies.status }}
+              {{ show.status }}
             </div>
           </div>
           <div class="state">
-            <div class="label">{{ "overviewInfo.title6" | translate }} :</div>
+            <div class="lable">{{ "overviewInfo.title6" | translate }} :</div>
             <div class="value">
               <span
                 [ngClass]="{ 'genre-ar': lang === 'ar', genre: lang === 'en' }"
-                *ngFor="let genre of movies.genres"
+                *ngFor="let genre of show.genres"
                 >{{ genre.name }}
               </span>
+            </div>
+          </div>
+          <div class="state">
+            <div class="lable">{{ "overviewInfo.title7" | translate }} :</div>
+            <div class="value">
+              {{ show.number_of_seasons }}
+            </div>
+          </div>
+          <div class="state">
+            <div class="lable">{{ "overviewInfo.title8" | translate }} :</div>
+            <div class="value">
+              {{ show.number_of_episodes }}
             </div>
           </div>
         </div>
@@ -56,26 +64,26 @@
     </p-tabPanel>
     <p-tabPanel [header]="'Details.link2' | translate">
       <div class="grid">
-        <ng-container *ngFor="let video of movieVideos">
+        <ng-container *ngFor="let video of showVideos">
           <div class="col-12 sm:col-6 md:col-4 lg:col-3">
-            <app-movie-videos
-              [key]="video.key"
+            <app-tv-videos
               [site]="video.site"
-            ></app-movie-videos>
+              [key]="video.key"
+            ></app-tv-videos>
           </div>
         </ng-container>
       </div>
     </p-tabPanel>
     <p-tabPanel [header]="'Details.link3' | translate">
       <div class="grid">
-        <ng-container *ngFor="let image of movieImages?.backdrops">
+        <ng-container *ngFor="let image of showImages?.backdrops">
           <div class="col-12 sm:col-6 md:col-4 lg:col-3">
             <p-image
-              [src]="imageSizes.larg + image.file_path"
+              [src]="imagesSizes.larg + image.file_path"
               alt="Image"
               width="100%"
               [preview]="true"
-            ></p-image>
+            />
           </div>
         </ng-container>
       </div>
@@ -83,8 +91,8 @@
     <p-tabPanel [header]="'Details.link4' | translate">
       <p-carousel
         [dir]="'ltr'"
-        *ngIf="movieActors"
-        [value]="movieActors.cast"
+        *ngIf="showCast"
+        [value]="showCast.cast"
         [numVisible]="5"
         [numScroll]="5"
       >
@@ -92,13 +100,8 @@
           <div class="actors">
             <img
               *ngIf="actor.profile_path"
-              [src]="imageSizes.medium + actor.profile_path"
+              [src]="imagesSizes.medium + actor.profile_path"
               [alt]="actor.name"
-            />
-            <img
-              *ngIf="!actor.profile_path"
-              src="../../../assets/images/avatar2.jpg"
-              alt=""
             />
             <span>{{ actor.name }}</span>
           </div>
@@ -106,7 +109,7 @@
       </p-carousel>
     </p-tabPanel>
     <p-tabPanel [header]="'Details.link5' | translate">
-      <ng-container *ngFor="let review of movieReviews">
+      <ng-container *ngFor="let review of showReviews">
         <div class="review">
           <div class="grid">
             <div class="col-12 md:col-2 lg:col-2">
@@ -114,7 +117,7 @@
                 <div class="avatar">
                   <img
                     [src]="
-                      imageSizes.medium + review.author_details.avatar_path
+                      imagesSizes.medium + review.author_details.avatar_path
                     "
                     [alt]="review.author"
                   />
@@ -145,23 +148,27 @@
       </ng-container>
     </p-tabPanel>
     <p-tabPanel [header]="'Details.link6' | translate">
-      <div class="grid">
-        <ng-container *ngFor="let similarMovie of similarMovies">
-          <div
-            *ngIf="similarMovie.poster_path"
-            class="col-12 sm:col-6 md:col-3 lg:col-2"
-          >
-            <app-movie-item [movie]="similarMovie"></app-movie-item>
-          </div>
-        </ng-container>
+      <div class="container">
+        <div class="grid">
+          <ng-container *ngFor="let item of similarShows">
+            <div
+              *ngIf="item.poster_path"
+              class="col-12 sm:col-6 md:col-3 lg:col-2"
+            >
+              <app-movie-item [tvShows]="item"></app-movie-item>
+            </div>
+          </ng-container>
+        </div>
+        <div>
+          <p-paginator
+            [dir]="'ltr'"
+            (onPageChange)="onPageChange($event)"
+            [rows]="20"
+            [totalRecords]="1000"
+            [rowsPerPageOptions]="[10, 20, 30]"
+          ></p-paginator>
+        </div>
       </div>
-      <p-paginator
-        [dir]="'ltr'"
-        (onPageChange)="onPageChange($event)"
-        [rows]="20"
-        [totalRecords]="1000"
-        [rowsPerPageOptions]="[10, 20, 30]"
-      ></p-paginator>
     </p-tabPanel>
   </p-tabView>
 </ng-container>

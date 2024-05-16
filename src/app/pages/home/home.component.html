@@ -1,18 +1,22 @@
 <!-- <pre>{{ movies | json }}</pre> -->
 <app-slider [items]="popularMovies"></app-slider>
 <app-items-banner
+  [dir]="'dir' | translate"
   [movie]="popularMovies"
-  title="Popular Movies"
+  [title]="'homeInfo.title1' | translate"
 ></app-items-banner>
 <app-items-banner
+  [dir]="'dir' | translate"
   [movie]="upComingrMovies"
-  title="Upcoming Movies"
+  [title]="'homeInfo.title2' | translate"
 ></app-items-banner>
 <app-items-banner
+  [dir]="'dir' | translate"
   [movie]="toRatedMovies"
-  title="Top Rated Movies"
+  [title]="'homeInfo.title3' | translate"
 ></app-items-banner>
 <app-items-banner
+  [dir]="'dir' | translate"
   [movie]="nowPlayingMovies"
-  title="Now Playing Movies"
+  [title]="'homeInfo.title4' | translate"
 ></app-items-banner>
